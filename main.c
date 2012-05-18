@@ -21,11 +21,11 @@ void init_excute()
 	
 	pid = fork();
 	if (pid == 0) {
-		execl("/sbin/adb", NULL);
+		execl("/sbin/adbd", NULL);
 	}	
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	pid_t pid;
 #ifndef DEBUG
@@ -40,7 +40,7 @@ int main()
 #ifndef DEBUG
 	pid = fork();
 	if (pid == 0) {
-		execl(BIN, NULL);
+		execv(BIN, argv);
 	}
 #endif
 	return 0;
